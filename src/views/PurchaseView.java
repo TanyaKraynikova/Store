@@ -10,4 +10,10 @@ public class PurchaseView {
     String name;
     int quantity;
     double price;
+
+    // Конструктор
+    public PurchaseView(Purchase model) {
+
+        this.model = model;
+    }
 }

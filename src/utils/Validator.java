@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Валидатор ввода значений
@@ -9,7 +10,7 @@ public class Validator {
     public static String validateName(Scanner scanner) {
         String str = scanner.nextLine().trim();
         while (str.isEmpty()) {
-            System.out.print("Empty value! Enter name: ");
+            System.out.print(Constants.EMPTY_NAME_MSG);
             str = scanner.nextLine().trim();
         }
         return str;
@@ -17,16 +18,23 @@ public class Validator {
 
     // Валидация ввода количества
     public static int validateQuantityInput(Scanner scanner) {
+
+        int quantity;
+        String str1 = null;
+
         while (!scanner.hasNextInt()) {
             String str = scanner.nextLine().trim();
-            System.out.printf("\"%s\" - not a number!%nEnter quantity: ", str);
+            System.out.printf(Constants.NAN_QUANTITY_MSG, str);
         }
-        int quantity = scanner.nextInt();
+        quantity = scanner.nextInt();
         while (quantity <= 0) {
-            System.out.println("Incorrect value! Enter quantity: ");
+            System.out.println(Constants.INCORRECT_QUANTITY_MSG);
             while (!scanner.hasNextInt()) {
-                String str = scanner.next().trim();
-                System.out.printf("\"%s\" - not a number!%nEnter quantity: ", str);
+                try {
+                    str1 = scanner.next().trim();
+                } catch (InputMismatchException ime) {
+                    System.out.printf(Constants.NAN_QUANTITY_MSG, str1);
+                }
             }
             quantity = scanner.nextInt();
         }
@@ -35,16 +43,23 @@ public class Validator {
 
     // Валидация ввода цены
     public static double validatePriceInput(Scanner scanner) {
+
+        double price;
+        String str1 = null;
+
         while (!scanner.hasNextDouble()) {
             String str = scanner.nextLine().trim();
-            System.out.printf("\"%s\" - not a number!%nEnter price: ", str);
+            System.out.printf(Constants.NAN_PRICE_MSG, str);
         }
-        double price = scanner.nextDouble();
+        price = scanner.nextDouble();
         while (price <= 0) {
-            System.out.print("Incorrect value! Enter price: ");
+            System.out.print(Constants.INCORRECT_PRICE_MSG);
             while (!scanner.hasNextDouble()) {
-                String str = scanner.nextLine().trim();
-                System.out.printf("\"%s\" - not a number!%nEnter price: ", str);
+                try {
+                    str1 = scanner.nextLine().trim();
+                } catch (InputMismatchException ime) {
+                    System.out.printf(Constants.NAN_PRICE_MSG, str1);
+                }
             }
             price = scanner.nextDouble();
         }

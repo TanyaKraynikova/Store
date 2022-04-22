@@ -12,7 +12,31 @@ public class Purchase implements Payment, Discount {
     private double price;
     private final static int DISCOUNT_RATE = 15;
 
+    public String getClientName() {
+        return clientName;
+    }
 
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    // Расчёт платежа, без учета скидки.
     @Override
     public double calculatePayment(int quota, double price) {
         return quota * price;

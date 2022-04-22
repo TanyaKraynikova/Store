@@ -35,9 +35,9 @@ public class PurchaseController {
 
         String output = "------------------------------\n" +
                 "Client name: " + name + "\n" +
-                "Purchase amount: " + paymentInitialRounded + "\n" +
-                "Discount amount: " + discountRounded + "\n" +
-                "For payment: " + paymentRounded;
+                "Purchase amount (USD): " + paymentInitialRounded + "\n" +
+                "Discount amount (USD): " + discountRounded + "\n" +
+                "For payment (USD: " + paymentRounded;
 
         view.getOutput(output);
     }
